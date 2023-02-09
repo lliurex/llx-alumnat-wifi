@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+case $1 in 
+        remove|purge|abort-install|disappear)
+
+		systemctl --global disable alumnatcleaner.service || true
+
+                ;;
+        *)
+                echo "Nothing to do"
+                ;; 
+esac
+
+# Other Stuff #
+
+#DEBHELPER#
