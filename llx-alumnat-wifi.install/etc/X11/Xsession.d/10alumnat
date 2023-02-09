@@ -1,0 +1,18 @@
+# ALUMNAT ONLY LOGIC
+
+if [ "$UID" = "69999" ]; then
+
+	TMP_DIR=$(mktemp -d)
+	export HOME=$TMP_DIR
+	rsync -ax /etc/skel/ $TMP_DIR
+
+	if [ -e /usr/share/llx-alumnat-wifi/rsrc/face.icon.png ]; then
+		cp /usr/share/llx-alumnat-wifi/rsrc/face.icon.png $TMP_DIR/.face.icon
+	fi
+
+	echo $TMP_DIR > /run/user/69999/home_dir
+
+	run-parts /usr/share/llx-alumnat-wifi/postactions || true
+
+fi
+

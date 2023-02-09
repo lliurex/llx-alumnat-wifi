@@ -1,0 +1,12 @@
+[Unit]
+Description=Deletes alumnat files after logout
+ConditionUser=69999
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/true
+ExecStop=/usr/bin/llx-alumnat-user-clean
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,35 @@
+{
+	"SETUP":{
+		"type":"python",
+		"path":"AlumnatAccountManager.py",
+		"class":"AlumnatAccountManager"
+	},
+	"METHODS":{
+		"get_alumnat_status":{
+			"allowed_groups": [
+              "anonymous"
+            ]
+           },
+         "fix_alumnat_password":{
+			"allowed_groups": [
+              "sudo",
+              "admins",
+              "teachers"
+            ]
+          },
+		"enable_alumnat_user":{
+			"allowed_groups": [
+              "sudo",
+              "admins",
+              "teachers"
+            ]
+        },    
+		"disable_alumnat_user":{
+			"allowed_groups": [
+              "sudo",
+              "admins",
+              "teachers"
+            ]
+         }
+    }
+}

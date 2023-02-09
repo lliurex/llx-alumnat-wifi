@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+
+from lxml import etree as ET
+#import xml.etree.ElementTree as ET
+import os
+import gettext
+
+class XBEL_Fixer:
+	
+	def __init__(self):
+		
+		self.home=os.path.expanduser("~")
+		self.xml_path="%s/.local/share/user-places.xbel"%self.home
+		
+	#def __init__
+	
+	
+	def get_user_dirs(self):
+		
+		gettext.textdomain("xdg-user-dirs")
+		documents=gettext.gettext("Documents")
+		desktop=gettext.gettext("Desktop")
+		downloads=gettext.gettext("Downloads")
+	
+		self.documents_dir=self.home+"/"+documents
+		self.desktop_dir=self.home+"/"+desktop
+		self.downloads_dir=self.home+"/"+downloads
+		
+		self.create_user_dirs()
+		
+	#def get_user_dirs
+	
+		
+	def create_user_dirs(self):
+		
+		for dir in [self.documents_dir,self.desktop_dir,self.downloads_dir]: 
+			if not os.path.exists(dir):
+				os.makedirs(dir)
+				
+		if not os.path.exists(self.home+"/.config"):
+			os.makedirs(self.home+"/.config")
+			
+		user_dirs_file=self.home+"/.config/user-dirs.dirs"
+		f=open(user_dirs_file,"w")
+		f.write("XDG_DOCUMENTS_DIR=%s\n"%self.documents_dir)
+		f.write("XDG_DESKTOP_DIR=%s\n"%self.desktop_dir)
+		f.write("XDG_DOWNLOAD_DIR=%s\n"%self.downloads_dir)
+		f.close()
+		
+	#def create_dirs
+	
+	
+	def modify_xml(self):
+	
+		if not os.path.exists(self.xml_path):
+			return False
+
+		try:
+			tmp_parser=ET.XMLParser(recover=True)
+			tree=ET.parse(self.xml_path,tmp_parser)
+			root = tree.getroot()
+
+			for child in root:
+
+				if child.tag == "bookmark":
+					t=child.find("title")
+					if t!=None:
+						if t.text == "Desktop":
+							path="file://%s"%self.desktop_dir
+							child.set("href",path)
+						if t.text == "Documents":
+							path="file://%s"%self.documents_dir
+							child.set("href",path)
+						if t.text == "Downloads":
+							path="file://%s"%self.downloads_dir
+							child.set("href",path)
+			
+			tree.write(self.xml_path, encoding="UTF-8",xml_declaration=True)
+		except Exception as e:
+			print(e)
+			
+	#def modifu_xml
+	
+		
+if __name__=="__main__":
+	
+	try:
+		x=XBEL_Fixer()
+		x.get_user_dirs()
+		x.modify_xml()
+	except:
+		pass
+	

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$UID" = "69999" ]; then
+
+	if [ -e /run/user/69999/home_dir ]; then
+
+		TMP_HOME=$(cat /run/user/69999/home_dir)
+		if [ -e $TMP_HOME ]; then
+			rm -rf $TMP_HOME || true
+		fi
+	fi
+
+fi
+
