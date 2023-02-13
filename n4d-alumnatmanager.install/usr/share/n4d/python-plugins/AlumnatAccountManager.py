@@ -23,7 +23,6 @@ class AlumnatAccountManager:
 		
 	#def startup
 	
-	
 	def _run_command(self,command):
 		
 		ret={}
@@ -100,7 +99,6 @@ class AlumnatAccountManager:
 		
 		self.enabled=ret["status"]
 			
-		#return ret
 		return n4d.responses.build_successful_call_response(ret)
 		
 	#def get_alumnat_status
@@ -124,13 +122,10 @@ class AlumnatAccountManager:
 			self._disable_password_change(tmpPassword)
 			
 		else:
-
 			ret["status"]=False
 			ret["msg"]="User does not exist"
 			
-		#return ret
 		return n4d.responses.build_successful_call_response(ret)
-		
 		
 	#def fix_alumnat_password
 	
@@ -159,7 +154,6 @@ class AlumnatAccountManager:
 		ret["status"]=False
 		ret["msg"]="%s already enabled"%AlumnatAccountManager.ALUMNAT_USER
 		
-		#return ret
 		return n4d.responses.build_successful_call_response(ret)
 			
 	#def add_alumnat_user
@@ -189,8 +183,7 @@ class AlumnatAccountManager:
 		#return ret
 		return n4d.responses.build_successful_call_response(ret)
 
-		
-	#def remove_alumnat_user
+	#def disable_alumnat_user
 	
 #class AlumnatAccountManager
 
