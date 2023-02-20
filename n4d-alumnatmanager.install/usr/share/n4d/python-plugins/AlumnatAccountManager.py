@@ -9,7 +9,8 @@ class AlumnatAccountManager:
 	ALUMNAT_USER="alumnat"
 	ALUMNAT_UID=69999
 	ALUMNAT_HOME="/run/%s/home"%ALUMNAT_USER
-	
+	ALUMNAT_PASSWORD="U6aMy0wojraho"
+
 	def __init__(self):
 		
 		self.get_alumnat_status()
@@ -45,9 +46,9 @@ class AlumnatAccountManager:
 		
 	#def _build_response
 	
-	def _disable_password_change(self,password):
+	def _disable_password_change(self):
 		
-		command="passwd -n 1000000 '%s'"%password
+		command="passwd -n 1000000 '%s'"%AlumnatAccountManager.ALUMNAT_USER
 		ret=self._run_command(command)
 		
 		if ret["returncode"]==0:
@@ -103,13 +104,12 @@ class AlumnatAccountManager:
 		
 	#def get_alumnat_status
 	
-	def fix_alumnat_password(self,password):
+	def fix_alumnat_password(self):
 		
 		ret=self._build_response()
-		tmpPassword=self._encrypt_passwd(password)
 
 		if self.enabled:
-			command="usermod -p '%s' %s"%(tmpPassword,AlumnatAccountManager.ALUMNAT_USER)
+			command="usermod -p '%s' %s"%(AlumnatAccountManager.ALUMNAT_PASSWORD,AlumnatAccountManager.ALUMNAT_USER)
 			p_return=self._run_command(command)
 			
 			if p_return["returncode"]==0:
@@ -119,7 +119,7 @@ class AlumnatAccountManager:
 				ret["status"]=False
 				ret["msg"]=p_return["stderr"]
 				
-			self._disable_password_change(tmpPassword)
+			self._disable_password_change()
 			
 		else:
 			ret["status"]=False
@@ -129,20 +129,19 @@ class AlumnatAccountManager:
 		
 	#def fix_alumnat_password
 	
-	def enable_alumnat_user(self,password):
+	def enable_alumnat_user(self):
 		
 		ret=self._build_response()
 		
 		if not self.enabled:
-			tmpPassword=self._encrypt_passwd(password)
-			command="useradd -p '%s' -M -N -u %s -r -s /bin/bash -G cdrom,dip,plugdev,sambashare -d %s %s"%(tmpPassword,AlumnatAccountManager.ALUMNAT_UID,AlumnatAccountManager.ALUMNAT_HOME,AlumnatAccountManager.ALUMNAT_USER)
+			command="useradd -p '%s' -M -N -u %s -r -s /bin/bash -G cdrom,dip,plugdev,sambashare -d %s %s"%(AlumnatAccountManager.ALUMNAT_PASSWORD,AlumnatAccountManager.ALUMNAT_UID,AlumnatAccountManager.ALUMNAT_HOME,AlumnatAccountManager.ALUMNAT_USER)
 			p_return=self._run_command(command)
 			
 			if p_return["returncode"]==0:
 				ret["status"]=True
 				ret["msg"]="Alumnat user created"
 				
-				self._disable_password_change(tmpPassword)
+				self._disable_password_change()
 				self._set_pam_config(True)
 				self.enabled=True
 			else:
