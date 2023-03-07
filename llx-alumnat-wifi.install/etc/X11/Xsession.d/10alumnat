@@ -4,6 +4,9 @@ if [ "$UID" = "69999" ]; then
 
 	TMP_DIR=$(mktemp -d)
 	export HOME=$TMP_DIR
+	export PATH=$HOME/.local/bin:$PATH
+	mkdir -p $HOME/.local/bin
+
 	rsync -ax /etc/skel/ $TMP_DIR
 
 	if [ -e /usr/share/llx-alumnat-wifi/rsrc/face.icon.png ]; then
