@@ -23,6 +23,19 @@ if os.path.exists(CHROMIUM_SNAP):
 	f.close()
 	os.system("chmod +x %s"%bin_file)
 	
+	if os.path.exists("/usr/bin/chromium-browser"):
+		f=open("/usr/bin/chromium-browser")
+		lines=f.readlines()
+		f.close()
+		
+		f=open(bin_file+"-browser","w")
+		for line in lines:
+			if "exec /snap" in line:
+				line=line.replace("/snap/bin/chromium",bin_file)
+			f.write(line)
+		f.close()
+		os.system("chmod +x %s"%(bin_file+"-browser"))
+		
 	desktop_file="/var/lib/snapd/desktop/applications/chromium_chromium.desktop"
 	if os.path.exists(desktop_file):
 		f=open(desktop_file)
@@ -41,7 +54,7 @@ if os.path.exists(CHROMIUM_SNAP):
 			
 		f.close()
 		
-		
+	
 		
 	
 	
