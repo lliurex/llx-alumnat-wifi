@@ -1,3 +1,9 @@
+llx-alumnat-wifi (1.2.2) focal; urgency=medium
+
+  * Added $@ to chromium script to suuport extra args if needed
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Tue, 11 Apr 2023 14:44:24 +0200
+
 llx-alumnat-wifi (1.2.1) focal; urgency=medium
 
   * Fixed chromium script
