@@ -11,7 +11,7 @@ if os.path.exists(CHROMIUM_SNAP):
 	script='\
 #!/bin/bash\n\
 \n\
-/snap/chromium/current/usr/lib/chromium-browser/chrome --user-data-dir=$HOME --class="ChrUnsnapped" %U\n\
+/snap/chromium/current/usr/lib/chromium-browser/chrome --user-data-dir=$HOME --class="ChrUnsnapped" %U $@\n\
 '
 	bin_path=os.environ["HOME"]+"/.local/bin/"
 	bin_file=bin_path+"chromium"
