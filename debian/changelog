@@ -1,0 +1,29 @@
+llx-alumnat-wifi (1.2.2) focal; urgency=medium
+
+  * Added $@ to chromium script to suuport extra args if needed
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Tue, 11 Apr 2023 14:44:24 +0200
+
+llx-alumnat-wifi (1.2.1) focal; urgency=medium
+
+  * Fixed chromium script
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Tue, 07 Mar 2023 11:07:21 +0100
+
+llx-alumnat-wifi (1.2) focal; urgency=medium
+
+  * Enabled use of chromium-browser
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Tue, 07 Mar 2023 08:53:10 +0100
+
+llx-alumnat-wifi (1.1) focal; urgency=medium
+
+  * Fixed to create user with blank password
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Mon, 20 Feb 2023 14:47:47 +0100
+
+llx-alumnat-wifi (1.0) focal; urgency=medium
+
+  * Initial release.
+
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Tue, 14 Feb 2023 14:15:15 +0100

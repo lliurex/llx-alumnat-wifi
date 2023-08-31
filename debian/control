@@ -1,0 +1,20 @@
+Source: llx-alumnat-wifi
+Section: admin
+Priority: optional
+Maintainer: Equipo LliureX <lliurex@gva.es>
+Uploaders:LliureX Team
+Build-Depends:debhelper (>= 9)
+Standards-Version: 3.9.5
+
+Package: llx-alumnat-wifi
+Architecture: all
+Depends: ${misc:Depends}, n4d-alumnatmanager, python3, lliurex-sddm-theme (>=1.10.0.0), debianutils
+Description: LliureX Alumnat
+ Config files for alumnat user account for autologin in the wifi gva for students
+
+Package: n4d-alumnatmanager
+Architecture: all
+Depends: ${misc:Depends},python3, n4d, python3-n4d
+Description: N4d Alumnat Manager plugin
+ Plugin to manage alumnat-user account
+
