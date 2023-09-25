@@ -2,13 +2,8 @@
 
 if [ "$UID" = "69999" ]; then
 
-	if [ -e /run/user/69999/home_dir ]; then
+	rm -rf /home/alumnat/.* /home/alumnat/* 2>/dev/null
 
-		TMP_HOME=$(cat /run/user/69999/home_dir)
-		if [ -e $TMP_HOME ]; then
-			rm -rf $TMP_HOME || true
-		fi
-	fi
-
+	
 fi
 
