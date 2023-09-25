@@ -8,12 +8,16 @@ class AlumnatAccountManager:
 	
 	ALUMNAT_USER="alumnat"
 	ALUMNAT_UID=69999
-	ALUMNAT_HOME="/run/%s/home"%ALUMNAT_USER
+	ALUMNAT_HOME="/home"%ALUMNAT_USER
 	ALUMNAT_PASSWORD="U6aMy0wojraho"
 
 	def __init__(self):
 		
+		self.enabled=False
 		self.get_alumnat_status()
+
+		if self.enabled:
+			self._check_home_dir()	
 		
 	#def init
 	
@@ -23,6 +27,18 @@ class AlumnatAccountManager:
 		pass
 		
 	#def startup
+
+	def _check_home_dir(self):
+	
+		try:
+			info=pwd.getpwnam("alumnat")
+			if info.pwd_dir != AlumnatAccountManager.ALUMNAT_HOME:
+				os.system("usermod -d %s -m %s 1>/dev/null 2>/dev/null || true"%(AlumnatAccountManager.ALUMNAT_HOME,AlumnatAccountManager.ALUMNAT_HOME))
+		except:
+			pass
+	
+	#def _check_home_dir
+
 	
 	def _run_command(self,command):
 		
