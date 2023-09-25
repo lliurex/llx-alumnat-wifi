@@ -6,6 +6,16 @@ case $1 in
 
         configure)
 		systemctl --global enable alumnatcleaner.service || true
+                if dpkg --compare-versions "$2" lt 1.12.3; then
+                        RC=0
+                        getent passwd alumnat 1>/dev/null || RC=1
+                        if [ "$RC" = "0" ]; then
+                                ls /home/alumnat 2>/dev/null || mkdir /home/alumnat
+                                chown -R alumnat:nogroup /home/alumnat || true
+                                usermod -d /home/alumnat -m alumnat || true
+                        fi
+                        
+                fi
                 ;;
 	   abort-upgrade|abort-remove|abort-deconfigure)
 			   ;;
