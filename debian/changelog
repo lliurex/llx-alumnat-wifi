@@ -1,3 +1,9 @@
+llx-alumnat-wifi (1.12.4) jammy; urgency=medium
+
+  * Fixed n4d plugin and favicon copying
+
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Tue, 26 Sep 2023 10:29:42 +0200
+
 llx-alumnat-wifi (1.12.3) jammy; urgency=medium
 
   * Fixed to run chromium snap
