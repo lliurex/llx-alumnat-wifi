@@ -1,3 +1,9 @@
+llx-alumnat-wifi (1.2.5) focal; urgency=medium
+
+  * Fixed n4d plugin
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Tue, 26 Sep 2023 09:29:07 +0200
+
 llx-alumnat-wifi (1.2.4) focal; urgency=medium
 
   * Fixed favicon copying
