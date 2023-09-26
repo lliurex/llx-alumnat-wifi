@@ -9,7 +9,7 @@ if [ "$UID" = "69999" ]; then
 	
 
 	if [ -e /usr/share/llx-alumnat-wifi/rsrc/face.icon.png ]; then
-		cp /usr/share/llx-alumnat-wifi/rsrc/face.icon.png $TMP_DIR/.face.icon
+		cp /usr/share/llx-alumnat-wifi/rsrc/face.icon.png $HOME/.face.icon
 	fi
 
 	run-parts /usr/share/llx-alumnat-wifi/postactions || true
