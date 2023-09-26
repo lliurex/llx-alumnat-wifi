@@ -8,7 +8,7 @@ class AlumnatAccountManager:
 	
 	ALUMNAT_USER="alumnat"
 	ALUMNAT_UID=69999
-	ALUMNAT_HOME="/home"%ALUMNAT_USER
+	ALUMNAT_HOME="/home/%s"%ALUMNAT_USER
 	ALUMNAT_PASSWORD="U6aMy0wojraho"
 
 	def __init__(self):
