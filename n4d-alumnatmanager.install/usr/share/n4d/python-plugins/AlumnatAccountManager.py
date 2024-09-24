@@ -17,7 +17,9 @@ class AlumnatAccountManager:
 		self.get_alumnat_status()
 
 		if self.enabled:
-			self._check_home_dir()	
+			self._check_home_dir()
+			self.fix_alumnat_password()
+			self.fix_alumnat_fullname()	
 		
 	#def init
 	
@@ -144,6 +146,39 @@ class AlumnatAccountManager:
 		return n4d.responses.build_successful_call_response(ret)
 		
 	#def fix_alumnat_password
+
+	def fix_alumnat_fullname(self):
+		
+		ret=self._build_response()
+		
+		if self.enabled:
+			command="chfn -f '' alumnat"
+			p_return=self._run_command(command)
+			
+			if p_return["returncode"]==0:
+				ret["status"]=True
+				ret["msg"]="Fullname changed"
+			else:
+				ret["status"]=False
+				ret["msg"]=p_return["stderr"]
+			
+			accounts_service_file="/var/lib/AccountsService/users/%s"%AlumnatAccountManager.ALUMNAT_USER
+			
+			if os.path.exists(accounts_service_file):
+				os.remove(accounts_service_file)
+				
+			accounts_service_file="/var/lib/AccountsService/icons/%s"%AlumnatAccountManager.ALUMNAT_USER
+			
+			if os.path.exists(accounts_service_file):
+				os.remove(accounts_service_file)
+				
+		else:
+			ret["status"]=False
+			ret["msg"]="Alumnat user is not enabled"
+			
+		return n4d.responses.build_successful_call_response(ret)
+	
+	#def fix_alumnat_fullname
 	
 	def enable_alumnat_user(self):
 		

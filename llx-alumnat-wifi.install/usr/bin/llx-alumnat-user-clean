@@ -3,6 +3,8 @@
 if [ "$UID" = "69999" ]; then
 
 	rm -rf /home/alumnat/.* /home/alumnat/* 2>/dev/null
+	n4d-client call AlumnatAccountManager.fix_alumnat_password
+	n4d-client call AlumnatAccountManager.fix_alumnat_fullname
 
 	
 fi
