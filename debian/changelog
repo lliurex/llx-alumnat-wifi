@@ -1,3 +1,9 @@
+llx-alumnat-wifi (1.12.5) jammy; urgency=medium
+
+  * Fullname, icon and password restoration after user exists or system reboot
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Tue, 24 Sep 2024 08:48:37 +0200
+
 llx-alumnat-wifi (1.12.4) jammy; urgency=medium
 
   * Fixed n4d plugin and favicon copying
