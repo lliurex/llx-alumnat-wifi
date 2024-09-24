@@ -12,9 +12,12 @@
            },
          "fix_alumnat_password":{
 			"allowed_groups": [
-              "sudo",
-              "admins",
-              "teachers"
+              "anonymous"
+            ]
+          },
+          "fix_alumnat_fullname":{
+            "allowed_groups": [
+              "anonymous"
             ]
           },
 		"enable_alumnat_user":{
