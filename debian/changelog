@@ -1,3 +1,9 @@
+llx-alumnat-wifi (1.22.5) noble; urgency=medium
+
+  * Initial release for Noble
+
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Tue, 08 Oct 2024 08:51:24 +0200
+
 llx-alumnat-wifi (1.12.5) jammy; urgency=medium
 
   * Fullname, icon and password restoration after user exists or system reboot
