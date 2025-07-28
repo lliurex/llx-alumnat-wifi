@@ -185,7 +185,7 @@ class AlumnatAccountManager:
 		ret=self._build_response()
 		
 		if not self.enabled:
-			command="useradd -p '%s' -M -N -u %s -r -s /bin/bash -G cdrom,dip,plugdev,sambashare -d %s %s"%(AlumnatAccountManager.ALUMNAT_PASSWORD,AlumnatAccountManager.ALUMNAT_UID,AlumnatAccountManager.ALUMNAT_HOME,AlumnatAccountManager.ALUMNAT_USER)
+			command="useradd -p '%s' -M -N -u %s -r -s /bin/bash -G cdrom,dip,plugdev,sambashare,nopasswdlogin -d %s %s"%(AlumnatAccountManager.ALUMNAT_PASSWORD,AlumnatAccountManager.ALUMNAT_UID,AlumnatAccountManager.ALUMNAT_HOME,AlumnatAccountManager.ALUMNAT_USER)
 			p_return=self._run_command(command)
 			
 			if p_return["returncode"]==0:
