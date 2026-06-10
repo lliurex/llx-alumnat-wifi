@@ -1,3 +1,9 @@
+llx-alumnat-wifi (1.12.6) jammy; urgency=medium
+
+  * Disabled kwallet
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Wed, 10 Jun 2026 10:23:29 +0200
+
 llx-alumnat-wifi (1.12.5) jammy; urgency=medium
 
   * Fullname, icon and password restoration after user exists or system reboot
