@@ -1,3 +1,9 @@
+llx-alumnat-wifi (1.22.7) noble; urgency=medium
+
+  * Disabled kwallet
+  
+ -- Juan Ramon Pelegrina <juapesai@hotmail.com>  Wed, 10 Jun 2026 10:47:53 +0200
+
 llx-alumnat-wifi (1.22.6) noble; urgency=medium
 
   * Added to group nopasswdlogin
