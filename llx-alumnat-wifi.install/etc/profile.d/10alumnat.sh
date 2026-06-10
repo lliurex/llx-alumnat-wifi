@@ -1,3 +1,4 @@
+#!/bin/sh
 # ALUMNAT ONLY LOGIC
 
 if [ "$UID" = "69999" ]; then
@@ -13,6 +14,9 @@ if [ "$UID" = "69999" ]; then
 	fi
 
 	run-parts /usr/share/llx-alumnat-wifi/postactions || true
+
+	printf "[Wallet]\nEnabled=false\nFirst Wizard=false\n" > "$HOME/.config/kwalletrc" || true
+
 
 fi
 
