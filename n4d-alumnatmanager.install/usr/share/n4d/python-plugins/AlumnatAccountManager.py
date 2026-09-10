@@ -201,7 +201,7 @@ class AlumnatAccountManager:
 				
 			return n4d.responses.build_successful_call_response(ret)
 			
-		ret["status"]=False
+		ret["status"]=True
 		ret["msg"]="%s already enabled"%AlumnatAccountManager.ALUMNAT_USER
 		
 		return n4d.responses.build_successful_call_response(ret)
@@ -227,8 +227,8 @@ class AlumnatAccountManager:
 				
 			return n4d.responses.build_successful_call_response(ret)
 			
-		ret["status"]=False
-		ret["msg"]="%s is not enabled"%AlumnatAccountManager.ALUMNAT_USER
+		ret["status"]=True
+		ret["msg"]="%s already disabled"%AlumnatAccountManager.ALUMNAT_USER
 		
 		#return ret
 		return n4d.responses.build_successful_call_response(ret)
